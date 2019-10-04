@@ -23,7 +23,7 @@ var mainState = {
         this.blocos = game.add.group();
         for (var i = 0; i < 5; i++) {
             for (var j = 0; j < 5; j++) {
-                var bloco = game.add.sprite(55 + i * 60, 55 + j * 35, 'bloco' + j);
+                var bloco = game.add.sprite(15 + i * 80, 55 + j * 35, 'bloco' + j);
                 bloco.body.immovable = true;
                 this.blocos.add(bloco);
             }
