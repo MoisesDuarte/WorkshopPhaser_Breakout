@@ -1,0 +1,7 @@
+1 - Configuração do Phaser
+2 - Função create, definições de física
+3 - Adicionando palheta, movimento da palheta (asset loading, drawing and movement)
+4 - Adicionando blocos e desenhando (asset loading, drawing)
+5 - Colorindo blocos
+6 - Adicionando a bola, definindo colisão contra paredes
+7 - Adicionando as colisões do jogo
