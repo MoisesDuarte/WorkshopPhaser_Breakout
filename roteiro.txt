@@ -5,3 +5,4 @@
 5 - Colorindo blocos
 6 - Adicionando a bola, definindo colisão contra paredes
 7 - Adicionando as colisões do jogo
+8 - Adicionando contagem de pontuação
