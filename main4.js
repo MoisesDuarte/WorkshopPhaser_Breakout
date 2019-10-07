@@ -1,8 +1,13 @@
 var mainState = {
     preload: function () {
         game.load.image('palheta', 'assets/images/palheta.png');
+
         // Codigo novo
-        game.load.image('bloco1', 'assets/images/bloco1.png');
+        game.load.image('bloco0', 'assets/images/bloco1.png'); // Codigo alterado
+        game.load.image('bloco1', 'assets/images/bloco2.png');
+        game.load.image('bloco2', 'assets/images/bloco3.png');
+        game.load.image('bloco3', 'assets/images/bloco4.png');
+        game.load.image('bloco4', 'assets/images/bloco5.png');
     },
 
     create: function () {
@@ -15,11 +20,10 @@ var mainState = {
         this.palheta = game.add.sprite(160, 400, 'palheta');
         this.palheta.body.immovable = true;
 
-        // Codigo novo
         this.blocos = game.add.group();
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 5; j++) {
-                var bloco = game.add.sprite(15+i*80, 55+j*35, 'bloco1');
+                var bloco = game.add.sprite(15 + i * 54, 55 + j * 25, 'bloco' + j); // Codigo alterado
                 bloco.body.immovable = true;
                 this.blocos.add(bloco);
             }

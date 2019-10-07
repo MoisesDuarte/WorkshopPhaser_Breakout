@@ -14,16 +14,27 @@ var mainState = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.enableBody = true;
 
+        // Codigo novo
+        this.pontuacao = 0;
+        this.labelPontuacao = game.add.text(10, 0, "Score:", {
+            font: '32px monogram',
+            fill: "#ffffff"
+        });
+        this.counterPontuacao = game.add.text(90, 0, "0", {
+            font: '32px monogram',
+            fill: "#ffffff"
+        });
+
         this.esquerda = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         this.direita = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
-        this.palheta = game.add.sprite(200, 400, 'palheta'); // Codigo alterado
+        this.palheta = game.add.sprite(200, 400, 'palheta'); 
         this.palheta.body.immovable = true;
-        this.palheta.body.collideWorldBounds = true; // Codigo alterado
+        this.palheta.body.collideWorldBounds = true; 
 
         this.blocos = game.add.group();
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 5; j++) {
-                var bloco = game.add.sprite(15 + i * 80, 55 + j * 35, 'bloco' + j);
+                var bloco = game.add.sprite(15 + i * 54, 55 + j * 25, 'bloco' + j);
                 bloco.body.immovable = true;
                 this.blocos.add(bloco);
             }
@@ -41,7 +52,6 @@ var mainState = {
         else if (this.direita.isDown) this.palheta.body.velocity.x = 300;
         else this.palheta.body.velocity.x = 0;
 
-        // Codigo novo
         game.physics.arcade.collide(this.palheta, this.bola);
         game.physics.arcade.collide(this.bola, this.blocos, this.acertaBloco, null, this);
         if (this.bola.y > this.palheta.y) {
@@ -49,8 +59,11 @@ var mainState = {
         }
     },
 
-    // Codigo novo
     acertaBloco: function (bola, bloco) {
+        // Codigo novo
+        this.pontuacao += 10;
+        this.counterPontuacao.text = this.pontuacao;
+
         bloco.kill();
     },
 };

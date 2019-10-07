@@ -1,7 +1,8 @@
 var mainState = {
     preload: function () {
-        // Codigo novo
         game.load.image('palheta', 'assets/images/palheta.png');
+        // Codigo novo
+        game.load.image('bloco1', 'assets/images/bloco1.png');
     },
 
     create: function () {
@@ -9,15 +10,23 @@ var mainState = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.enableBody = true;
 
-        // Codigo novo
         this.esquerda = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         this.direita = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
         this.palheta = game.add.sprite(160, 400, 'palheta');
         this.palheta.body.immovable = true;
+
+        // Codigo novo
+        this.blocos = game.add.group();
+        for (var i = 0; i < 7; i++) {
+            for (var j = 0; j < 5; j++) {
+                var bloco = game.add.sprite(15+i*54, 55+j*25, 'bloco1');
+                bloco.body.immovable = true;
+                this.blocos.add(bloco);
+            }
+        }
     },
 
     update: function () {
-        // Codigo novo
         if (this.esquerda.isDown) this.palheta.body.velocity.x = -300;
         else if (this.direita.isDown) this.palheta.body.velocity.x = 300;
         else this.palheta.body.velocity.x = 0;
